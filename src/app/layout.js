@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,28 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <nav className="bg-zinc-800">
+          <Link href={'/'} className="p-4 text-white">
+            Home
+          </Link>
+          <Link href={'/teams'} className="p-4 text-white">
+            Equipos
+          </Link>
+          <Link href={'/players'} className="p-4 text-white">
+            Jugadores
+          </Link>
+          <Link href={'/matches'} className="p-4 text-white">
+            Partidos
+          </Link>
+        </nav>
+
+        {children}
+
+        <footer className="bg-indigo-800">
+          <p className="text-white">Footer</p>
+        </footer>
+      </body>
     </html>
   );
 }
