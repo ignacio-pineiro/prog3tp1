@@ -24,25 +24,29 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <nav className="bg-zinc-800">
-          <Link href={'/'} className="p-4 text-white">
-            Home
-          </Link>
-          <Link href={'/teams'} className="p-4 text-white">
-            Equipos
-          </Link>
-          <Link href={'/players'} className="p-4 text-white">
-            Jugadores
-          </Link>
-          <Link href={'/matches'} className="p-4 text-white">
-            Partidos
-          </Link>
+        <nav className="bg-green-800 px-2 border-b border-gray-800">
+          <div className="flex h-16 items-center space-x-4">
+            <Link href={'/'} className="rounded-md px-3 py-2 text-base font-medium text-neutral-300 hover:text-white hover:bg-white/5">
+              Home
+            </Link>
+            <Link href={'/teams'} className="rounded-md px-3 py-2 text-base font-medium text-neutral-300 hover:text-white hover:bg-white/5">
+              Equipos
+            </Link>
+            <Link href={'/players'} className="rounded-md px-3 py-2 text-base font-medium text-neutral-300 hover:text-white hover:bg-white/5">
+              Jugadores
+            </Link>
+            <Link href={'/matches'} className="rounded-md px-3 py-2 text-base font-medium text-neutral-300 hover:text-white hover:bg-white/5">
+              Partidos
+            </Link>
+          </div>
         </nav>
 
         {children}
 
-        <footer className="bg-indigo-800">
-          <p className="text-white">Footer</p>
+        <footer className="bg-green-800 border-t border-gray-800 px-2">
+          <div className="flex h-12 items-center">
+            <p className="text-sm text-neutral-300">© 2026 Grupo Winear 3ro</p>
+          </div>
         </footer>
       </body>
     </html>
