@@ -1,3 +1,16 @@
+Nombre del Proyecto: Match Play
+
+Descripcion:
+    Esta es una aplicación web desarrollada con Next.js que permite visualizar jugadores, equipos y partidos de una liga deportiva, utilizando rutas base, rutas anidadas, rutas dinámicas y componentes de navegación.
+
+Grupo Nro 1 - winear 3ero
+
+Integrantes:
+    - Alcaraz, Valentino
+    - Castellano, Joaquin
+    - Ordoñez, Esteban
+    - Piñeiro, Ignacio
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
