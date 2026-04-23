@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
 
         {children}
 
-        <footer className="bg-indigo-800">
+        <footer className="bg-indigo-800 p-4 mt-auto">
           <p className="text-white">Footer</p>
         </footer>
       </body>
