@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "flag-icons/css/flag-icons.min.css";
 import Link from "next/link";
 
 const geistSans = Geist({
