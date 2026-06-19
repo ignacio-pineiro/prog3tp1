@@ -12,7 +12,7 @@ export default function MatchCard({ match }) {
   return (
     <section className="border-b w-full hover:bg-slate-300 py-1">
       <Link
-        href={`/matches/${match.customId}`}
+        href={`/matches/${match.id}`}
         className=""
       >
         <div className="font-mono flex items-stretch">

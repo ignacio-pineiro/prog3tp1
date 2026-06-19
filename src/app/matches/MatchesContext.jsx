@@ -64,7 +64,7 @@ export function MatchesProvider({ children }) {
     }
   }
 
-  const getMatchById = (id) => matches.find((match) => match.customId === id)
+  const getMatchById = (id) => matches.find((match) => String(match.id) === String(id))
 
   const getMatchesByRound = (roundId) => matches.filter(match => match.roundInfo.round === roundId)
 
