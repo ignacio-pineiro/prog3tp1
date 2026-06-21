@@ -10,7 +10,7 @@ export default function MatchCard({ match }) {
   const horario = convertTimestamp(match.startTimestamp, true)
 
   return (
-    <section className="border-b w-full hover:bg-slate-300 py-1">
+    <section className="border-b w-full hover:bg-green-200 bg-green-300 py-1">
       <Link
         href={`/matches/${match.id}`}
         className=""

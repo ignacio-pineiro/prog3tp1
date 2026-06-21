@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 
 import MatchHeader from "@/app/components/matches/MatchHeader";
 import Prediction from "@/app/components/Prediction";
-import Link from "next/link";
 
 export default function MatchDetailLayout({ children }) {
   const { id } = useParams();
@@ -27,26 +26,8 @@ export default function MatchDetailLayout({ children }) {
           </span>
         )}
 
-        <div className="w-full flex gap-4">
-          {/* incidents */}
-          <Link
-            href={`/matches/${id}`}
-            className="mt-2 p-2 rounded bg-green-700"
-          >
-            Resumen
-          </Link>
-          <Link
-            href={`/matches/${id}/statistics`}
-            className="mt-2 p-2 rounded bg-green-700"
-          >
-            Estadísticas
-          </Link>
-          <Link
-            href={`/matches/${id}/lineups`}
-            className="mt-2 p-2 rounded bg-green-700"
-          >
-            Alineación
-          </Link>
+        <div className="w-full flex gap-4 justify-center border-b bg-green-800 py-2">
+          <span className="text-white">Resumen</span>
         </div>
 
         {children}
