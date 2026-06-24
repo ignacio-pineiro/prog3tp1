@@ -2,16 +2,10 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 async function obtenerEquiposMundial() {
-  if (!process.env.SPORTS_API_KEY) {
-    throw new Error('Falta SPORTS_API_KEY en el archivo .env.local')
-  }
-
   const res = await fetch(
     'https://v2.football.sportsapipro.com/api/world-cup-2026/teams',
     {
-      headers: {
-        'x-api-key': process.env.SPORTS_API_KEY,
-      },
+      headers: { 'x-api-key': process.env.SPORTS_API_KEY },
       next: { revalidate: 300 },
     }
   )
@@ -60,26 +54,20 @@ const ALIAS_SLUGS = {
 
 function extraerArrayEquipos(data) {
   return (
-    data.data?.teams ??
-    data.teams ??
-    data.data?.competitors ??
-    data.competitors ??
-    data.data?.events ??
-    data.events ??
-    []
+    data.data?.teams ?? []
   )
 }
 
 function normalizarEquipo(raw) {
-  const equipo = raw.team ?? raw.competitor ?? raw
-  const nombre = equipo.name ?? equipo.shortName ?? raw.name ?? raw.shortName
+  const equipo = raw
+  const nombre = equipo.name
 
   return {
-    id: equipo.id ?? raw.id ?? raw.teamId ?? raw.competitorId,
+    id: equipo.id,
     nombre,
     slug: crearSlug(nombre),
     slugApi: crearSlug(
-      equipo.slug ?? equipo.nameForURL ?? raw.slug ?? raw.nameForURL
+      equipo.slug
     ),
   }
 }
@@ -99,34 +87,12 @@ function buscarEquipo(dataEquipos, teamSlug) {
 
 function extraerArrayJugadores(data) {
   return (
-    data.data?.players ??
-    data.data?.team?.players ??
-    data.data?.squad?.players ??
-    data.data?.squad?.athletes ??
-    data.players ??
-    data.squad?.players ??
-    data.squad?.athletes ??
-    data.squads?.[0]?.athletes ??
-    data.athletes ??
-    []
+    data.data?.players ?? []
   )
 }
 
-function obtenerTextoPosicion(jugador, raw) {
-  const posicion =
-    jugador.position?.name ??
-    jugador.position?.abbreviation ??
-    jugador.position?.shortName ??
-    raw.position?.name ??
-    raw.position?.abbreviation ??
-    raw.position?.shortName ??
-    jugador.position ??
-    raw.position ??
-    jugador.formationPosition?.name ??
-    jugador.formationPosition?.abbreviation ??
-    raw.formationPosition?.name ??
-    raw.formationPosition?.abbreviation ??
-    ''
+function obtenerTextoPosicion(jugador) {
+  const posicion = jugador.position
 
   return String(posicion).trim()
 }
@@ -136,12 +102,7 @@ function normalizarPosicion(posicion) {
   const valorMinuscula = valor.toLowerCase()
 
   if (
-    valorMinuscula === 'g' ||
-    valorMinuscula === 'gk' ||
-    valorMinuscula.includes('goalkeeper') ||
-    valorMinuscula.includes('keeper') ||
-    valorMinuscula.includes('arquero') ||
-    valorMinuscula.includes('portero')
+    valorMinuscula === 'g'
   ) {
     return {
       posicion: 'Arquero',
@@ -150,11 +111,7 @@ function normalizarPosicion(posicion) {
   }
 
   if (
-    valorMinuscula === 'd' ||
-    valorMinuscula === 'df' ||
-    valorMinuscula.includes('defender') ||
-    valorMinuscula.includes('defensor') ||
-    valorMinuscula.includes('back')
+    valorMinuscula === 'd'
   ) {
     return {
       posicion: 'Defensor',
@@ -163,11 +120,7 @@ function normalizarPosicion(posicion) {
   }
 
   if (
-    valorMinuscula === 'm' ||
-    valorMinuscula === 'mf' ||
-    valorMinuscula.includes('midfielder') ||
-    valorMinuscula.includes('mediocampista') ||
-    valorMinuscula.includes('midfield')
+    valorMinuscula === 'm'
   ) {
     return {
       posicion: 'Mediocampista',
@@ -176,22 +129,13 @@ function normalizarPosicion(posicion) {
   }
 
   if (
-    valorMinuscula === 'a' ||
-    valorMinuscula === 'f' ||
-    valorMinuscula === 'fw' ||
-    valorMinuscula === 'st' ||
-    valorMinuscula.includes('attacker') ||
-    valorMinuscula.includes('forward') ||
-    valorMinuscula.includes('striker') ||
-    valorMinuscula.includes('delantero') ||
-    valorMinuscula.includes('atacante')
+    valorMinuscula === 'f' 
   ) {
     return {
       posicion: 'Delantero',
       categoria: 'Delanteros',
     }
   }
-
 
   return {
     posicion: valor || 'Sin posición',
@@ -207,57 +151,22 @@ function calcularEdadDesdeFecha(fechaNacimiento) {
   if (Number.isNaN(fecha.getTime())) return null
 
   const hoy = new Date()
-
   let edad = hoy.getFullYear() - fecha.getFullYear()
   const mes = hoy.getMonth() - fecha.getMonth()
 
   if (mes < 0 || (mes === 0 && hoy.getDate() < fecha.getDate())) {
     edad--
   }
-
   return edad
 }
 
 function obtenerEdad(jugador, raw) {
-  const edadDirecta =
-    jugador.age ??
-    raw.age ??
-    jugador.playerAge ??
-    raw.playerAge
-
-  if (edadDirecta) {
-    return edadDirecta
-  }
-
-  const fechaNacimiento =
-    jugador.dateOfBirth ??
-    raw.dateOfBirth ??
-    jugador.birthDate ??
-    raw.birthDate ??
-    jugador.birthday ??
-    raw.birthday
-
+  const fechaNacimiento = jugador.dateOfBirth
   const edadCalculada = calcularEdadDesdeFecha(fechaNacimiento)
 
   if (edadCalculada) {
     return edadCalculada
   }
-
-  const timestampNacimiento =
-    jugador.dateOfBirthTimestamp ??
-    raw.dateOfBirthTimestamp ??
-    jugador.birthTimestamp ??
-    raw.birthTimestamp
-
-  if (timestampNacimiento) {
-    const timestamp =
-      timestampNacimiento.toString().length === 10
-        ? timestampNacimiento * 1000
-        : timestampNacimiento
-
-    return calcularEdadDesdeFecha(timestamp)
-  }
-
   return null
 }
 
