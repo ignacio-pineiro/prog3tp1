@@ -29,38 +29,44 @@ export default function Prediction({ match }) {
   // console.log(match.winnerCode);
 
   return (
-    <div className="flex justify-around items-center w-full gap-12 py-2 border-b ">
-      <button
-        className='border px-2 w-1/5 rounded-lg cursor-pointer hover:bg-zinc-400 
-        disabled:hover:bg-background disabled:cursor-default outline-purple-900
+    <>
+    <span className="w-full text-center font-semibold pt-3">Haz tu predicción del ganador</span>
+      <div className="flex justify-around items-center w-full gap-12 py-4">
+        <button
+          className='flex justify-center gap-4 rounded-lg border border-zinc-700 bg-zinc-800 
+        h-8 transition-all hover:border-blue-500 hover:bg-zinc-700 w-1/5 cursor-pointer
+        disabled:bg-background disabled:cursor-default outline-blue-500
         disabled:border-0 disabled:outline-2'
-        onClick={() => handleChoice(1)}
-        disabled={choice === 1}
-      >
-        <CountryFlag countryCode={(match.homeTeam.country.alpha2).toLowerCase()} />
-      </button>
+          onClick={() => handleChoice(1)}
+          disabled={choice === 1}
+        >
+          <CountryFlag countryCode={(match.homeTeam.country.alpha2).toLowerCase()} />
+        </button>
 
-      <button
-        className='border px-2 w-1/5 rounded-lg cursor-pointer hover:bg-zinc-400 
-        disabled:hover:bg-background disabled:cursor-default outline-purple-900
+        <button
+          className='flex justify-center gap-4 rounded-lg border border-zinc-700 bg-zinc-800 
+        h-8 transition-all hover:border-blue-500 hover:bg-zinc-700 w-1/5 cursor-pointer
+        disabled:bg-background disabled:cursor-default outline-blue-500
         disabled:border-0 disabled:outline-2'
-        onClick={() => handleChoice(3)}
-        disabled={choice === 3}
-      >
-        <p className="text-center">X</p>
-      </button>
+          onClick={() => handleChoice(3)}
+          disabled={choice === 3}
+        >
+          <p className="text-center self-center">X</p>
+        </button>
 
-      <button
-        className='border px-2 w-1/5 rounded-lg cursor-pointer hover:bg-zinc-400 
-        disabled:hover:bg-background disabled:cursor-default outline-purple-900
+        <button
+          className='flex justify-center gap-4 rounded-lg border border-zinc-700 bg-zinc-800 
+        h-8 transition-all hover:border-blue-500 hover:bg-zinc-700 w-1/5 cursor-pointer
+        disabled:bg-background disabled:cursor-default outline-blue-500
         disabled:border-0 disabled:outline-2'
-        onClick={() => handleChoice(2)}
-        disabled={choice === 2}
-      >
-        <CountryFlag
-          countryCode={(match.awayTeam.country.alpha2).toLowerCase()}
-        />
-      </button>
-    </div>
+          onClick={() => handleChoice(2)}
+          disabled={choice === 2}
+        >
+          <CountryFlag
+            countryCode={(match.awayTeam.country.alpha2).toLowerCase()}
+          />
+        </button>
+      </div>
+    </>
   )
 }

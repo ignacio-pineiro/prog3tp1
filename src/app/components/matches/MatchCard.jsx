@@ -10,12 +10,12 @@ export default function MatchCard({ match }) {
   const horario = convertTimestamp(match.startTimestamp, true)
 
   return (
-    <section className="border-b w-full hover:bg-green-200 bg-green-300 py-1">
+    <>
       <Link
         href={`/matches/${match.id}`}
-        className=""
+        className="flex items-center justify-between gap-4 rounded-xl border border-zinc-700 bg-zinc-800 px-5 py-3 transition-all hover:border-blue-500 hover:bg-zinc-700"
       >
-        <div className="font-mono flex items-stretch">
+        <div className="font-mono flex items-stretch w-full">
           <div className="flex items-center">
             <span>{horario}</span>
           </div>
@@ -32,12 +32,12 @@ export default function MatchCard({ match }) {
             </div>
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col self-end">
             <span>{match.homeScore.display}</span>
             <span>{match.awayScore.display}</span>
           </div>
         </div>
       </Link>
-    </section>
+    </>
   )
 }

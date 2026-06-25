@@ -18,7 +18,7 @@ export default function Incident({ incident }) {
     case 'card':
       return (
         <section className={`flex gap-2 items-center ${side} mx-3 my-2`}>
-          <p>{incident.time}{(incident.addedTime) && (`+ ${incident.addedTime}`)}'</p>
+          <p className="min-w-6">{incident.time}{(incident.addedTime) && (` + ${incident.addedTime}`)}'</p>
           <div className="border rounded p-1">
             <svg width="16" height="16" fill={incident.incidentClass} className="bi bi-file-fill" viewBox="0 0 16 16">
               <path fillRule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2" />
@@ -31,7 +31,7 @@ export default function Incident({ incident }) {
     case 'goal':
       return (
         <section className={`flex gap-2 items-center ${side} mx-3 my-2`}>
-          <p>{incident.time}{(incident.addedTime) && (`+ ${incident.addedTime}`)}'</p>
+          <p className="min-w-6">{incident.time}{(incident.addedTime) && (` + ${incident.addedTime}`)}'</p>
           <div className="flex items-center gap-1 border rounded p-1">
             <svg aria-hidden="true" role="img" width="16" height="16" viewBox="0 0 48 48">
               <g fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
@@ -52,7 +52,7 @@ export default function Incident({ incident }) {
     case 'substitution':
       return (
         <section className={`flex gap-2 items-center ${side} mx-3 my-2`}>
-          <p>{incident.time}'</p>
+          <p className="min-w-6">{incident.time}{(incident.addedTime) && (` + ${incident.addedTime}`)}'</p>
           <div className="flex items-center gap-1 border rounded p-1">
             <svg width="16" height="16" fill="currentColor" className="bi bi-arrow-left-right" viewBox="0 0 16 16">
               <path fillRule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5" />
@@ -63,14 +63,14 @@ export default function Incident({ incident }) {
         </section>
       )
 
-      case 'varDecision':
-        return (
-          <></>
-        )
+    case 'varDecision':
+      return (
+        <></>
+      )
 
     default:
       console.log(incident);
-      
+
       return (
         <section className="bg-red-600 flex justify-between w-1/4">
           <p className="font-black">{incident.incidentType}'</p>

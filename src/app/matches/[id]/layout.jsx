@@ -21,12 +21,12 @@ export default function MatchDetailLayout({ children }) {
         {(match.status.code === 0) ? (
           <Prediction match={match} />
         ) : (
-          <span className="flex justify-around items-center w-full py-2 border-b">
+          <span className="flex justify-around items-center w-full py-2 ">
             No se puede hacer una predicción una vez que el partido ha comenzado
           </span>
         )}
 
-        <div className="w-full flex gap-4 justify-center border-b bg-green-800 py-2">
+        <div className="w-full flex gap-4 justify-center rounded-t-xl bg-blue-500 py-2">
           <span className="text-white">Resumen</span>
         </div>
 

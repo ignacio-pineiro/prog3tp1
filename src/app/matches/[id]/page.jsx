@@ -1,5 +1,7 @@
 "use client"
 
+import IncidentData from '@/lib/match-id-incidents.json'
+
 import Incident from '@/app/components/matches/Incident';
 import axios from "axios";
 import { useParams } from 'next/navigation';
@@ -25,6 +27,8 @@ export default function MatchDetailPage() {
         setResumen(response.data.result)
       }
       fetchSummary()
+
+      // setResumen(IncidentData.data.result.data.incidents)
     } catch (err) {
       setError(err.response?.data?.error || 'Error al conectar con la API')
     } finally {
@@ -35,7 +39,7 @@ export default function MatchDetailPage() {
 
 
   return (
-    <div className="bg-green-200 w-full">
+    <div className="rounded-b-xl bg-zinc-800 w-full pb-2">
       <p>{error}</p>
 
       {loading && (
