@@ -1,14 +1,15 @@
 import { createContext, useContext, useState, useEffect } from "react";
-// APImatches despues se remplaza por fetch a la API
-import APImatches from '@/lib/matches.json'
-// fetch /api/world-cup-2026/matches/rounds
-import APIrounds from '@/lib/rounds.json'
+import axios from "axios";
 
 const MatchesContext = createContext()
 
 export function MatchesProvider({ children }) {
   const [matches, setMatches] = useState([])
-  const [rounds, setRounds] = useState({})
+  const [roundData, setRoundData] = useState({})
+  const [resumen, setResumen] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [loadingRoundData, setLoadingRoundData] = useState(false)
+  const [error, setError] = useState(null)
 
   const [isMounted, setIsMounted] = useState(false)
 
@@ -16,18 +17,18 @@ export function MatchesProvider({ children }) {
     setIsMounted(true)
 
     const cachedMatches = window.localStorage.getItem('matches')
-    const cachedRounds = window.localStorage.getItem('rounds')
+    const cachedRoundData = window.localStorage.getItem('roundData')
+
+    if (cachedRoundData) {
+      setRoundData(JSON.parse(cachedRoundData))
+    } else {
+      fetchRoundData()
+    }
 
     if (cachedMatches) {
       setMatches(JSON.parse(cachedMatches))
     } else {
       fetchMatchesByRound(1)
-    }
-
-    if (cachedRounds) {
-      setRounds(JSON.parse(cachedRounds))
-    } else {
-      fetchRounds()
     }
   }, [])
 
@@ -39,47 +40,41 @@ export function MatchesProvider({ children }) {
   }
 
   const addMatches = (addedMatches) => {
-    const newMatches = [...matches, addedMatches]
+    const newMatches = [...matches, ...addedMatches]
     saveMatches(newMatches)
   }
 
   // llamar a la api de nuevo para actualizar la info - limitar las 100 llamadas
-  const fetchMatchesByRound = (roundId) => {
-    // fetch /api/world-cup-2026/matches/round/:roundId
-    // axios.GET()
+  const fetchMatchesByRound = async (roundId) => {
+    setLoading(true)
+    setError(null)
 
-    if (matches.length === 0) {
-      saveMatches(APImatches.data.result.data.events)
-    } else {
-      addMatches(APImatches.data.result.data.events)
+    try {
+      const response = await axios.post('/api/match', {
+        round: roundId
+      })
+
+      if (matches.length === 0) {
+        saveMatches(response.data.result)
+      } else {
+        addMatches(response.data.result)
+      }
+    } catch (err) {
+      setError(err.response?.data?.error || 'Error al conectar con la API')
+    } finally {
+      setLoading(false)
     }
   }
 
-  const fetchMatches = () => {
-    // clear old match info
-    saveMatches([])
+  const clearMatches = () => {
+    const oldMatches = matches.filter(match => (match.roundInfo.round < roundData.currentRound.round))
 
-    rounds.rounds.forEach(round => {
-      if (round.round <= rounds.currentRound.round || (round.round <= 3)) {
-        // fetch /api/world-cup-2026/matches/round/:roundId
-
-
-        if (round.round === 1) {
-          console.log(`callAPI save ${round.round}`);
-          // saveMatches()
-        } else {
-          console.log(`callAPI add ${round.round}`);
-          // addMatches(APImatches.data.result.data.events)
-        }
-      }
-    })
-
-    saveMatches(APImatches.data.result.data.events)
+    saveMatches(oldMatches)
   }
 
   const getMatchById = (id) => matches.find((match) => String(match.id) === String(id))
 
-  const getMatchesByRound = (roundId) => matches.filter(match => match.roundInfo.round === roundId)
+  const getMatchesByRound = (roundId) => matches.filter(match => match.roundInfo?.round === roundId)
 
   const convertTimestamp = (timestamp, deleteCurrentYear = false) => {
     const currentYear = new Date().getFullYear()
@@ -102,16 +97,27 @@ export function MatchesProvider({ children }) {
     return time;
   }
 
-  const fetchRounds = () => {
-    // fetch /api/world-cup-2026/matches/rounds
-    // APIrounds = axios.GET()
-
-    setRounds(APIrounds)
+  const saveRoundData = (newRoundData) => {
+    setRoundData(newRoundData)
     if (typeof window !== "undefined") {
-      window.localStorage.setItem("rounds", JSON.stringify(APIrounds));
+      window.localStorage.setItem("roundData", JSON.stringify(newRoundData));
     }
-    console.log(rounds);
-    
+  }
+
+  const fetchRoundData = async () => {
+    setLoadingRoundData(true)
+    setError(null)
+
+    try {
+      const response = await axios.get('/api/rounds')
+
+      saveRoundData(response.data.result)
+
+    } catch (err) {
+      setError(err.response?.data?.error || 'Error al conectar con la API')
+    } finally {
+      setLoadingRoundData(false)
+    }
   }
 
   if (!isMounted) return null;
@@ -119,14 +125,18 @@ export function MatchesProvider({ children }) {
   return (
     <MatchesContext.Provider value={{
       matches,
-      rounds,
+      roundData,
+      resumen,
+      loading,
+      loadingRoundData,
+      error,
       addMatches,
-      fetchMatches,
       fetchMatchesByRound,
+      clearMatches,
       getMatchById,
       getMatchesByRound,
       convertTimestamp,
-      fetchRounds
+      fetchRoundData
     }}>
       {children}
     </MatchesContext.Provider>

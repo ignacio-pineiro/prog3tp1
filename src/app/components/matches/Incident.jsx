@@ -45,6 +45,8 @@ export default function Incident({ incident }) {
             </svg>
             <p className="text-xs font-bold">{incident.homeScore} - {incident.awayScore}</p>
           </div>
+          <p className="font-semibold">{incident.player.shortName}</p>
+          <p>({incident.assist1.shortName})</p>
         </section>
       )
     case 'substitution':
@@ -61,7 +63,14 @@ export default function Incident({ incident }) {
         </section>
       )
 
+      case 'varDecision':
+        return (
+          <></>
+        )
+
     default:
+      console.log(incident);
+      
       return (
         <section className="bg-red-600 flex justify-between w-1/4">
           <p className="font-black">{incident.incidentType}'</p>

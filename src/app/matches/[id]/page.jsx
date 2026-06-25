@@ -1,14 +1,52 @@
+"use client"
+
 import Incident from '@/app/components/matches/Incident';
-// to replace with fetch GET /api/match/{matchId}
-import incidents from '@/lib/match-id-incidents.json'
+import axios from "axios";
+import { useParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
-export default async function MatchDetailPage({ params }) {
-  const { id } = await params;
+export default function MatchDetailPage() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [resumen, setResumen] = useState([])
 
-  const resumen = incidents.data.result.data.incidents
+  const { id } = useParams();
+
+  useEffect(() => {
+    setLoading(true)
+    setError(null)
+
+    try {
+      async function fetchSummary() {
+        const response = await axios.post('/api/incidents', {
+          matchId: id
+        })
+
+        setResumen(response.data.result)
+      }
+      fetchSummary()
+    } catch (err) {
+      setError(err.response?.data?.error || 'Error al conectar con la API')
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+
 
   return (
     <div className="bg-green-200 w-full">
+      <p>{error}</p>
+
+      {loading && (
+        <div className='flex justify-center'>
+          <svg aria-hidden="true" role="img" width="32" height="32" viewBox="0 0 24 24" className="animate-spin">
+            <path fill="none" stroke="currentColor" strokeLinecap="square" strokeWidth="2" d="M2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2"></path>
+          </svg>
+        </div>
+      )}
+
+
       {resumen.map((incident, key) =>
         <Incident incident={incident} key={key} />
       )}
