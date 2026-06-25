@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import KnockoutBracket from "@/components/KnockoutBracket";
+import KnockoutBracket from "@/app/components/knockout/KnockoutBracket";
 
 export default function KnockoutPage() {
   const [partidos, setPartidos] = useState([]);
