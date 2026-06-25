@@ -1,0 +1,361 @@
+{
+  "createdAt": 1782168285107,
+  "response": {
+    "total": 32,
+    "partidos": [
+      {
+        "id": 12813000,
+        "ronda": "16avos",
+        "equipoLocal": "2A",
+        "equipoVisitante": "2B",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782673200,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813012,
+        "ronda": "16avos",
+        "equipoLocal": "1C",
+        "equipoVisitante": "2F",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782752400,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813014,
+        "ronda": "16avos",
+        "equipoLocal": "Germany",
+        "equipoVisitante": "3A/3B/3C/3D/3F",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782765000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812998,
+        "ronda": "16avos",
+        "equipoLocal": "1F",
+        "equipoVisitante": "2C",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782781200,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812989,
+        "ronda": "16avos",
+        "equipoLocal": "2E",
+        "equipoVisitante": "2I",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782838800,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812995,
+        "ronda": "16avos",
+        "equipoLocal": "1I",
+        "equipoVisitante": "3C/3D/3F/3G/3H",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782853200,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813001,
+        "ronda": "16avos",
+        "equipoLocal": "Mexico",
+        "equipoVisitante": "3C/3E/3F/3H/3I",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782867600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813020,
+        "ronda": "16avos",
+        "equipoLocal": "1L",
+        "equipoVisitante": "3E/3H/3I/3J/3K",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782921600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813013,
+        "ronda": "16avos",
+        "equipoLocal": "G1",
+        "equipoVisitante": "3A/3E/3H/3I/3J",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782936000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812992,
+        "ronda": "16avos",
+        "equipoLocal": "USA",
+        "equipoVisitante": "3B/3E/3F/3I/3J",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1782950400,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813004,
+        "ronda": "16avos",
+        "equipoLocal": "H1",
+        "equipoVisitante": "2J",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783018800,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812997,
+        "ronda": "16avos",
+        "equipoLocal": "2K",
+        "equipoVisitante": "2L",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783033200,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813019,
+        "ronda": "16avos",
+        "equipoLocal": "1B",
+        "equipoVisitante": "3E/3F/3G/3I/3J",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783047600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813018,
+        "ronda": "16avos",
+        "equipoLocal": "2D",
+        "equipoVisitante": "G2",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783101600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812999,
+        "ronda": "16avos",
+        "equipoLocal": "1J",
+        "equipoVisitante": "H2",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783116000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813011,
+        "ronda": "16avos",
+        "equipoLocal": "1K",
+        "equipoVisitante": "3D/3E/3I/3J/3L",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783128600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813009,
+        "ronda": "Octavos",
+        "equipoLocal": "W73",
+        "equipoVisitante": "W75",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783184400,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813010,
+        "ronda": "Octavos",
+        "equipoLocal": "W74",
+        "equipoVisitante": "W77",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783198800,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813006,
+        "ronda": "Octavos",
+        "equipoLocal": "W76",
+        "equipoVisitante": "W78",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783281600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813007,
+        "ronda": "Octavos",
+        "equipoLocal": "W79",
+        "equipoVisitante": "W80",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783296000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812990,
+        "ronda": "Octavos",
+        "equipoLocal": "W83",
+        "equipoVisitante": "W84",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783364400,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813002,
+        "ronda": "Octavos",
+        "equipoLocal": "W81",
+        "equipoVisitante": "W82",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783382400,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812993,
+        "ronda": "Octavos",
+        "equipoLocal": "W86",
+        "equipoVisitante": "W88",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783440000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812991,
+        "ronda": "Octavos",
+        "equipoLocal": "W85",
+        "equipoVisitante": "W87",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783454400,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813016,
+        "ronda": "Octavos",
+        "equipoLocal": "W89",
+        "equipoVisitante": "W90",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783627200,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812994,
+        "ronda": "Octavos",
+        "equipoLocal": "W93",
+        "equipoVisitante": "W94",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783710000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813017,
+        "ronda": "Octavos",
+        "equipoLocal": "W91",
+        "equipoVisitante": "W92",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783803600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813015,
+        "ronda": "Octavos",
+        "equipoLocal": "W95",
+        "equipoVisitante": "W96",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1783818000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813008,
+        "ronda": "Octavos",
+        "equipoLocal": "W97",
+        "equipoVisitante": "W98",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1784055600,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12812996,
+        "ronda": "Octavos",
+        "equipoLocal": "W99",
+        "equipoVisitante": "W100",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1784142000,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813003,
+        "ronda": "Octavos",
+        "equipoLocal": "L101",
+        "equipoVisitante": "L102",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1784408400,
+        "sede": "Sede por confirmar"
+      },
+      {
+        "id": 12813005,
+        "ronda": "Octavos",
+        "equipoLocal": "W101",
+        "equipoVisitante": "W102",
+        "marcadorLocal": null,
+        "marcadorVisitante": null,
+        "estado": "Not started",
+        "fechaInicio": 1784487600,
+        "sede": "Sede por confirmar"
+      }
+    ],
+    "fuente": "sportsapipro"
+  }
+}
