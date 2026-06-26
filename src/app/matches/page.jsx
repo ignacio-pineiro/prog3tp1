@@ -1,37 +1,53 @@
-import Link from "next/link";
+"use client"
+
+import { useMatches } from "@/app/matches/MatchesContext";
+import { usePredictions } from "../PredictionsContext";
+
+import MatchList from "../components/matches/MatchList";
 
 export default function page() {
-
-  const matches = [
-    { id: 1, team1: "Tigres", team2: "Leones", date: "2026-04-20" },
-    { id: 2, team1: "Águilas", team2: "Lobos", date: "2026-04-22" },
-  ];
+  const { matches, fetchRoundData, clearMatches } = useMatches()
+  const { score, updateScore } = usePredictions()
 
   return (
-    <>
-      <div className="w-full">
-        <h1 className="p-10 text-4xl">Partidos</h1>
-      </div>
-      
-      <div>
-        <p className="p-10 text-2xl">Aquí se podran registrar los partidos.</p>
-      </div>
-
-      <Link
-        href="/matches/create_match" className="inline-block mb-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        + Crear partido
-      </Link>
-
-      <div className="space-y-4 w-full mx-auto">
-        {matches.map((match) => (
-          <Link key={match.id} href={`/matches/${match.id}`} className="block p-4 border rounded hover:bg-zinc-100 dark:hover:bg-zinc-800">
-            <p className="font-semibold">
-              {match.team1} vs {match.team2}
+    <div className="min-h-screen bg-zinc-950 text-white">
+      <main className="mx-auto flex w-full max-w-6xl flex-col px-4 py-10">
+        <div className="flex justify-between items-center gap-6 text-center sm:text-left w-full">
+          <div className="mb-6 text-center">
+            <h1 className="text-3xl font-bold tracking-tight">
+              Partidos
+            </h1>
+            <p className="mt-2 text-sm text-zinc-400">
+              Puntaje: {score}
             </p>
-            <p className="text-sm text-zinc-500">{match.date}</p>
-          </Link>
-        ))}
-      </div>
-    </>
+          </div>
+          <div className="flex gap-4">
+            <button
+              className="rounded-xl border border-zinc-700 bg-zinc-800 px-5 py-3 transition-all hover:border-blue-500 hover:bg-zinc-700 cursor-pointer"
+              onClick={fetchRoundData}
+            >
+              Update Rounds
+            </button>
+            {(matches.length !== 0) && (
+              <button
+                className="rounded-xl border border-zinc-700 bg-zinc-800 px-5 py-3 transition-all hover:border-blue-500 hover:bg-zinc-700 cursor-pointer"
+                onClick={clearMatches}
+              >
+                Clear Matches
+              </button>
+            )}
+            <button
+              className="rounded-xl border border-zinc-700 bg-zinc-800 px-5 py-3 transition-all hover:border-blue-500 hover:bg-zinc-700 cursor-pointer"
+              onClick={updateScore}
+            >
+              Update Score
+            </button>
+          </div>
+        </div>
+
+        <MatchList />
+
+      </main>
+    </div>
   )
 }

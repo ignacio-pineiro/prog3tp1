@@ -1,33 +1,59 @@
-import Link from "next/link";
+"use client"
 
-export default async function MatchDetailPage({ params }) {
-    
-    const { id } = await params;
+import IncidentData from '@/lib/match-id-incidents.json'
 
-    const match = {
-        id: params.id,
-        team1: "Los Tigres",
-        team2: "Los Leones",
-        date: "2026-04-15",
-        location: "Estadio Central"
+import Incident from '@/app/components/matches/Incident';
+import axios from "axios";
+import { useParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+
+export default function MatchDetailPage() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [resumen, setResumen] = useState([])
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    setLoading(true)
+    setError(null)
+
+    try {
+      async function fetchSummary() {
+        const response = await axios.post('/api/incidents', {
+          matchId: id
+        })
+
+        setResumen(response.data.result)
+      }
+      fetchSummary()
+
+      // setResumen(IncidentData.data.result.data.incidents)
+    } catch (err) {
+      setError(err.response?.data?.error || 'Error al conectar con la API')
+    } finally {
+      setLoading(false)
     }
+  }, [])
 
-    return (
-    <div className="p-10">
 
-        <Link href="/matches" className="self-start mb-4 text-white font-semibold">
-            &larr; Volver a Partidos
-        </Link>
 
-        <h1 className="text-3xl mb-4">Detalle del Partido</h1>
+  return (
+    <div className="rounded-b-xl bg-zinc-800 w-full pb-2">
+      <p>{error}</p>
 
-        <div className="p-6 border rounded">
-            <p className="text-xl font-semibold mb-2">
-            {match.team1} vs {match.team2}
-            </p>
-            <p>Fecha: {match.date}</p>
-            <p>Estadio: {match.location}</p>
+      {loading && (
+        <div className='flex justify-center'>
+          <svg aria-hidden="true" role="img" width="32" height="32" viewBox="0 0 24 24" className="animate-spin">
+            <path fill="none" stroke="currentColor" strokeLinecap="square" strokeWidth="2" d="M2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2"></path>
+          </svg>
         </div>
+      )}
+
+
+      {resumen.map((incident, key) =>
+        <Incident incident={incident} key={key} />
+      )}
     </div>
-    )
+  )
 }
