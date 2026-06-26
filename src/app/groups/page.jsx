@@ -1,4 +1,3 @@
-// Server Component — no directiva "use client"
 import Link from 'next/link'
 import GroupSelectClient from './GroupSelectClient'
 
@@ -20,9 +19,8 @@ async function obtenerGrupos() {
   return res.json()
 }
 
-// La API puede devolver la data en distintas formas, manejamos ambas
 function extraerGrupos(data) {
-  return data.standings ?? data.groups ?? []
+  return data.data?.standings ?? data.standings ?? data.groups ?? []
 }
 
 function extraerRows(grupo) {
@@ -45,15 +43,12 @@ export default async function GruposPage() {
           Fase de Grupos — 12 grupos, 48 equipos
         </p>
 
-        {/* Componente cliente con el select */}
         <GroupSelectClient />
 
-        {/* Grid con todos los grupos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
           {grupos.map((grupo) => {
             const rows = extraerRows(grupo)
             const nombre = nombreGrupo(grupo)
-            // Extraemos la letra: "Group A" → "A"
             const letra = nombre.replace('Group ', '').trim()
 
             return (
