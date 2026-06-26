@@ -6,7 +6,6 @@ const MatchesContext = createContext()
 export function MatchesProvider({ children }) {
   const [matches, setMatches] = useState([])
   const [roundData, setRoundData] = useState({})
-  const [resumen, setResumen] = useState([])
   const [loading, setLoading] = useState(false)
   const [loadingRoundData, setLoadingRoundData] = useState(false)
   const [error, setError] = useState(null)
@@ -126,7 +125,6 @@ export function MatchesProvider({ children }) {
     <MatchesContext.Provider value={{
       matches,
       roundData,
-      resumen,
       loading,
       loadingRoundData,
       error,

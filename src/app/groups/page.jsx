@@ -49,7 +49,9 @@ export default async function GruposPage() {
           {grupos.map((grupo) => {
             const rows = extraerRows(grupo)
             const nombre = nombreGrupo(grupo)
-            const letra = nombre.replace('Group ', '').trim()
+            
+            const letra = nombre.replace('FIFA World Cup, Group ', '').trim()
+            console.log(letra);
 
             return (
               <Link
