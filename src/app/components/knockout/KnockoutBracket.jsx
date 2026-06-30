@@ -9,7 +9,7 @@ const rondas = [
   "Final",
 ];
 
-export default function KnockoutBracket({ partidos }) {
+export default function KnockoutBracket({ partidos = [] }) {
   return (
     <div className="overflow-x-auto pb-6">
       <div className="flex min-w-max gap-8">
