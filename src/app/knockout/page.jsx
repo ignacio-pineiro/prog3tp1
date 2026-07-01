@@ -20,7 +20,7 @@ export default function KnockoutPage() {
         }
 
         setPartidos(data.partidos || []);
-      } catch (error) {
+      } catch {
         setError("No se pudieron cargar las eliminatorias");
       } finally {
         setLoading(false);

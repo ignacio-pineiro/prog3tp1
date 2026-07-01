@@ -20,18 +20,24 @@ export default function RoundSelector() {
     if (roundData.length === 0) {
       fetchRoundData()
     }
+
+    setMatches(getMatchesByRound(1))
   }, [])
 
   const [round, setRound] = useState(0);
+  const [matches, setMatches] = useState([])
 
-  var matches = getMatchesByRound(1)
-
-  const handleRoundChange = (newRound) => {
+  const handleRoundChange = async (newRound) => {
+    setMatches([])
     setRound(newRound)
-    matches = getMatchesByRound(roundData.rounds[newRound].round)
-    if (matches.length === 0) {
-      fetchMatchesByRound(roundData.rounds[newRound].round)
+
+    var roundMatches = getMatchesByRound(roundData.rounds[newRound].round)
+
+    if (roundMatches.length === 0) {
+      roundMatches = await fetchMatchesByRound(roundData.rounds[newRound].round)
     }
+
+    setMatches(roundMatches)
   }
 
   return (
@@ -89,17 +95,17 @@ export default function RoundSelector() {
 
       </div>
 
-      <section className="mt-6 flex flex-col gap-3">
-        {matches.map((match, key) => (
-          <MatchCard key={key} match={match} />
-        ))}
-      </section>
-
       {loading && (
         <svg aria-hidden="true" role="img" width="32" height="32" viewBox="0 0 24 24" className="self-center animate-spin">
           <path fill="none" stroke="currentColor" strokeLinecap="square" strokeWidth="2" d="M2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2"></path>
         </svg>
       )}
+
+      <section className="mt-6 flex flex-col gap-3">
+        {matches.map((match, key) => (
+          <MatchCard key={key} match={match} />
+        ))}
+      </section>
 
       {error && <p className="self-center text-red-600 text-2xl">{error}</p>}
     </>
