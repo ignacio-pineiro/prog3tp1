@@ -49,7 +49,7 @@ export function MatchesProvider({ children }) {
     setError(null)
 
     try {
-      const response = await axios.post('/api/match', {
+      var response = await axios.post('/api/match', {
         round: roundId
       })
 
@@ -62,6 +62,7 @@ export function MatchesProvider({ children }) {
       setError(err.response?.data?.error || 'Error al conectar con la API')
     } finally {
       setLoading(false)
+      return response.data.result
     }
   }
 
